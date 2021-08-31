@@ -4,20 +4,20 @@ import personService from './services/persons'
 
 const Filter = ({ value, handler }) => (
   <div>
-    filter with name or number: <input value={value} onChange={handler} />
+    filter with name or number: <input id="filter" value={value} onChange={handler} />
   </div>
 )
 
 const PersonForm = (props) => (
   <form onSubmit={props.onSubmit}>
     <div>
-      name: <input value={props.newName} onChange={props.nameHandler} />
+      name: <input id="nameInput" value={props.newName} onChange={props.nameHandler} />
     </div>
     <div>
-      number: <input value={props.newNumber} onChange={props.numberHandler} />
+      number: <input id="numberInput" value={props.newNumber} onChange={props.numberHandler} />
     </div>
     <div>
-      <button type="submit">add</button>
+      <button id="submit" type="submit">add</button>
     </div>
   </form>
 )
@@ -136,27 +136,6 @@ const App = () => {
   }
 
   return (
-    // <Router>
-    //   <Switch>
-    //     <Route exact path="/">
-    //       <div>
-    //         <h2>Phonebook</h2>
-    //         <Notification message={message} error={error} />
-    //         <Filter value={filter} handler={handleFilterChange} />
-    //         <h2>add a new entry</h2>
-    //         <PersonForm
-    //           onSubmit={addEntry}
-    //           newName={newName}
-    //           newNumber={newNumber}
-    //           nameHandler={(event) => setNewName(event.target.value)}
-    //           numberHandler={(event) => setNewNumber(event.target.value)}
-    //         />
-    //         <h2>Numbers</h2>
-    //         <ContactList selectFrom={entriesToShow} handleDeletion={deleteEntry} />
-    //       </div>
-    //     </Route>
-    //   </Switch>
-    // </Router>
     <div>
       <h2>Phonebook</h2>
       <Notification message={message} error={error} />

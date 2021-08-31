@@ -89,6 +89,18 @@ app.post('/api/persons', (request, response, next) => {
     .catch(error => next(error))
 })
 
+// eslint-disable-next-line no-undef
+if (process.env.NODE_ENV === 'test') {
+  app.post('/api/persons/reset', (request, response, next) => {
+    Person.deleteMany({})
+      .then(() => {
+        response.status(204).end()
+      })
+      .catch(error => next(error))
+  })
+}
+
+
 const errorHandler = (error, request, response, next) => {
   console.error(error.message)
 
