@@ -8,7 +8,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  simple_deployment_pipeline:
+  deployment_pipeline:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,3 +21,18 @@ jobs:
         run: npm run lint
       - name: build
         run: npm run build
+      - name: tests (e2e)
+        env: 
+          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+        uses: cypress-io/github-action@v2
+        with:
+          command: npm run test
+          start: npm run start:test
+          wait-on: http://localhost:4000
+      - name: deploy to heroku
+        if: ${{ github.event_name == 'push' }}
+        uses: AkhileshNS/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: hidden-castle-79103
+          heroku_email: alanen.patrik@gmail.com
