@@ -29,3 +29,10 @@ jobs:
           command: npm run test
           start: npm run start:test
           wait-on: http://localhost:4000
+      - name: deploy to heroku
+        if: ${{ github.event_name == 'push' }}
+        uses: AkhileshNS/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: hidden-castle-79103
+          heroku_email: alanen.patrik@gmail.com
