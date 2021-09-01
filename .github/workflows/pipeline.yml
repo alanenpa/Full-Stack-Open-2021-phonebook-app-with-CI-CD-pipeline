@@ -36,3 +36,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: hidden-castle-79103
           heroku_email: alanen.patrik@gmail.com
+          healthcheck: "https://hidden-castle-79103.herokuapp.com/health"
+          checkstring: "ok"
+          delay: 5
+          rollbackonhealthcheckfailed: true
