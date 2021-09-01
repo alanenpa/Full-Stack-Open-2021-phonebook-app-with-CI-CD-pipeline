@@ -3,3 +3,4 @@ dist/
 .history/
 requests/
 .env
+cypress/videos/
