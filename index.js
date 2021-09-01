@@ -32,7 +32,10 @@ app.get('/info', (request, response) => {
     const info = `<p>Phonebook has info for ${persons.length} people</p> <p>${Date()}</p>`
     response.send(info)
   })
+})
 
+app.get('/health', (req, res) => {
+  res.send('ok')
 })
 
 app.get('/api/persons/:id', (request, response, next) => {
