@@ -25,5 +25,5 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           command: npm run test
-          start: npm start:test
+          start: npm run start:test
           wait-on: http://localhost:4000
